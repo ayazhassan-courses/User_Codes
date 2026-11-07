@@ -11,13 +11,7 @@ over the interval $[0, 1]$, which corresponds to the integral form of π.
 
 ## Build Instructions
 
-To build the code, you need to load the required software modules
-
-```bash
-module load gcc/12.2.0-fasrc01 
-module load openmpi/5.0.5-fasrc02
-```
-and then compile the program using the included `Makefile`. To compile the code in the terminal you should execute the command:
+To compile the code in the terminal you should execute the command:
 
 ```bash
 make
