@@ -2,7 +2,7 @@
 
 NVIDIA Collective Communications Library (NCCL) and CUDA can be used together to efficiently implement multi-GPU communication and computation on a single node. NCCL provides optimized primitives for collective operations like `all-reduce`, `broadcast`, `reduce`, and `gather`, specifically tuned for NVIDIA GPUs and interconnects such as NVLink. When used in conjunction with CUDA, developers can offload computation to GPUs and use NCCL to synchronize and exchange data between them without needing to go through the CPU or host memory.
 
-Here we include a collection of examples illustrating the use of NCCL on the FAS Cannon cluster. These examples demonstrate basic NCCL functionality for single-node setups using multiple GPUs, covering initialization with NCCL communicators, memory allocation and data transfers with CUDA, and synchronization across devices.
+Here we include a collection of examples illustrating the use of NCCL. These examples demonstrate basic NCCL functionality for single-node setups using multiple GPUs, covering initialization with NCCL communicators, memory allocation and data transfers with CUDA, and synchronization across devices.
 
 ## Contents
 
@@ -15,11 +15,7 @@ Here we include a collection of examples illustrating the use of NCCL on the FAS
 
 ## Compile
 
-All examples in this directory can be compiled using the [NVIDIA HPC Software Development Kit (SDK)](https://developer.nvidia.com/hpc-sdk), which includes the required CUDA toolkit and NCCL libraries. The NVIDIA SDK is available as a software module:
-
-```bash
-module load nvhpc/24.11-fasrc01
-```
+All examples in this directory can be compiled using the [NVIDIA HPC Software Development Kit (SDK)](https://developer.nvidia.com/hpc-sdk), which includes the required CUDA toolkit and NCCL libraries.
 
 From the folder containing your `.cu` files (e.g., `ncclAllGather.cu`, `ncclBcast.cu`, etc.), run the following:
 
@@ -184,9 +180,6 @@ int main(int argc, char* argv[]){
 #SBATCH --mem=4G
 #SBATCH --gres=gpu:4
 #SBATCH --time=00:10:00
-
-# Load the required software modules
-module load nvhpc/24.11-fasrc01 
 
 # Run the executable
 ./ncclAllGather.x
