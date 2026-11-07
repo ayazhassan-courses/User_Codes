@@ -40,14 +40,7 @@ All actual data movement runs through **NCCL**.
 
 ### Build
 
-Load the required software modules:
-
-```bash
-module load nvhpc/24.11-fasrc01                      # NCCL and CUDA  
-module load gcc/12.2.0-fasrc01 openmpi/4.1.5-fasrc03 # MPI
-```
-
-Then use `nvcc` to compile the example codes:
+Use `nvcc` to compile the example codes:
 
 ```bash
 # AllGather
@@ -87,9 +80,6 @@ export NCCL_IB_HCA=mlx5_0                            # adjust if using Infiniban
 
 export UCX_LOG_LEVEL=error
 
-module load nvhpc/24.11-fasrc01                      # NCCL and CUDA  
-module load gcc/12.2.0-fasrc01 openmpi/4.1.5-fasrc03 # MPI
-
 srun -n 8 --mpi=pmix ./ncclAllGather_mpi.x
 ```
 
@@ -114,9 +104,6 @@ export NCCL_IB_HCA=mlx5_0                            # adjust if using Infiniban
 # export NCCL_P2P_DISABLE=0
 
 export UCX_LOG_LEVEL=error
-
-module load nvhpc/24.11-fasrc01                      # NCCL and CUDA  
-module load gcc/12.2.0-fasrc01 openmpi/4.1.5-fasrc03 # MPI
 
 srun -n 8 --mpi=pmix ./ncclBcast_mpi.x
 ```
@@ -143,9 +130,6 @@ export NCCL_IB_HCA=mlx5_0                           # adjust if using Infiniband
 
 export UCX_LOG_LEVEL=error
 
-module load nvhpc/24.11-fasrc01                      # NCCL and CUDA
-module load gcc/12.2.0-fasrc01 openmpi/4.1.5-fasrc03 # MPI
-
 srun -n 8 --mpi=pmix ./ncclReduce_mpi.x
 ```
 
@@ -170,9 +154,6 @@ export NCCL_IB_HCA=mlx5_0                            # adjust if using Infiniban
 #export NCCL_P2P_DISABLE=0
 
 export UCX_LOG_LEVEL=error
-
-module load nvhpc/24.11-fasrc01                      # NCCL and CUDA  
-module load gcc/12.2.0-fasrc01 openmpi/4.1.5-fasrc03 # MPI
 
 srun -n 8 --mpi=pmix ./ncclReduceScatter_mpi.x
 ```
@@ -260,8 +241,6 @@ export NCCL_IB_HCA=mlx5_0                           # adjust if using Infiniband
 
 export UCX_LOG_LEVEL=error
 
-module load nvhpc/24.11-fasrc01                      # NCCL and CUDA
-
 srun -n 8 --export=ALL ./ncclAllGather_nompi.x
 ```
 
@@ -308,8 +287,6 @@ export NCCL_IB_HCA=mlx5_0                           # adjust if using Infiniband
 # export NCCL_P2P_DISABLE=0
 
 export UCX_LOG_LEVEL=error
-
-module load nvhpc/24.11-fasrc01                      # NCCL and CUDA
 
 srun -n 8 --mpi=pmix ./ncclAllGather_pmix.x
 ```
