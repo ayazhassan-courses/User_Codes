@@ -73,6 +73,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
   defined, which produces empty -I and -L flags.
 
   Fix:
+  
       nano Makefile
 
   Add these lines before INCLUDES:
@@ -114,11 +115,13 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
       make
 
 1.2 Running run_4.sbatch
+
       nano run_4.sbatch
       change:  #SBATCH -p gpu
       to:      #SBATCH -p A5000
 
   Then submit:
+  
       sbatch run_4.sbatch
 
 
@@ -129,9 +132,11 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
 2.1 Compiling ncclAllGather_mpi.cu
 
   Original command (in the docs):
+  
       nvcc -O3 -std=c++17 -o ncclAllGather_mpi.x ncclAllGather_mpi.cu -lnccl -lmpi
 
   Step 1 - Adding the MPI paths resolves only the paths issue:
+  
       nvcc -O3 -std=c++17 \
         ncclAllGather_mpi.cu -o ncclAllGather_mpi.x \
         -I/opt/anaconda3/include \
@@ -142,12 +147,14 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
   Step 2 - Another issue then appears: CUDA version mismatch (nvcc is CUDA
   12.2, and the system NCCL needs 12.3 or newer). Install the newer NCCL
   and set NCCL_DIR (see 0.2 and 0.3, ignore if you already did):
+  
       pip install --user nvidia-nccl-cu12
       NCCL_DIR=$(python -c "import nvidia.nccl as m; print(m.__path__[0])")
       echo $NCCL_DIR
       ls $NCCL_DIR/include $NCCL_DIR/lib
 
   Step 3 - Correct compile command:
+  
       nvcc -O3 -std=c++17 ncclAllGather_mpi.cu -o ncclAllGather_mpi.x \
         -I$NCCL_DIR/include -I/opt/anaconda3/include \
         -L$NCCL_DIR/lib -L/opt/anaconda3/lib \
@@ -155,17 +162,20 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
         -l:libnccl.so.2 -lmpi
 
   Step 4 - Verify:
+  
       ldd ./ncclAllGather_mpi.x | grep -E 'nccl|cudart'
 
   The ldd line should show libnccl.so.2 coming from the ~/.local/... path.
   It should not list libcudart at all.
 
 2.2 Running run_allgather_mpi.sbatch
+
       nano run_allgather_mpi.sbatch
       change:  #SBATCH -p gpu
       to:      #SBATCH -p A5000
 
   Then submit:
+  
       sbatch run_allgather_mpi.sbatch
 
 2.3 Compiling ncclAllGather_nompi.cu (and other files with the same error)
@@ -198,6 +208,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
   terminal and must be redone if the terminal is closed.
 
   Don't forget:
+  
       nano run_ncclAllGather.slurm
       replace --partition=gpu with --partition=A5000
 
@@ -207,9 +218,11 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
 ### -------------------------------------------------------------------------------
 
 4.1 Install PyTorch
+
       pip install torch
 
 4.2 mlp_ddp.py - create an sbatch file
+
       touch run_mlp_ddp.sbatch
       nano run_mlp_ddp.sbatch
 
@@ -233,10 +246,13 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
       srun python mlp_ddp.py
 
   Then submit:
+  
       sbatch run_mlp_ddp.sbatch
 
 4.3 random.py
+
   Works fine. Just run:
+  
       python random.py
 
 ===============================================================================
