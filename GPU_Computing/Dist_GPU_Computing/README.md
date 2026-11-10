@@ -12,7 +12,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
 * [Compiling and running KHARMA (MPI+CUDA code)](https://github.com/fasrc/User_Codes/tree/master/Applications/KHARMA)
 
 # REQUIRED CHANGES TO RUN THE User_Codes REPO ON THE KFUPM JRCAI SLURM CLUSTER
-# (GPU_Computing / Dist_GPU_Computing)
+## (GPU_Computing / Dist_GPU_Computing)
 
 ## CONTENTS
   0. General notes (apply to all sections)
