@@ -44,6 +44,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
       ctrl + x                     (exit)
 
 0.2 NCCL version mismatch (one-time install)
+
   nvcc on the cluster is CUDA 12.2, while the system NCCL needs CUDA 12.3 or
   newer. Linking with the system NCCL (-lnccl) fails. Install a newer NCCL
   once:
@@ -51,6 +52,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
       pip install --user nvidia-nccl-cu12
 
 0.3 NCCL_DIR variable
+
   NCCL_DIR is set only for the current terminal. Redo it every time the
   terminal is closed / reopened:
 
@@ -66,6 +68,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
 ### -------------------------------------------------------------------------------
 
 1.1 Makefile
+
   Problem: the Makefile uses MPI_INCLUDE and MPI_LIB, but neither is
   defined, which produces empty -I and -L flags.
 
