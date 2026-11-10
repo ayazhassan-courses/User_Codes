@@ -14,7 +14,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
 # REQUIRED CHANGES TO RUN THE User_Codes REPO ON THE KFUPM JRCAI SLURM CLUSTER
 # (GPU_Computing / Dist_GPU_Computing)
 
-CONTENTS
+## CONTENTS
   0. General notes (apply to all sections)
   1. MPI and CUDA
   2. Distributed GPU Collectives on Multiple Nodes (NCCL + CUDA)
@@ -22,9 +22,9 @@ CONTENTS
   4. PyTorch folder
 
 
--------------------------------------------------------------------------------
-0. GENERAL NOTES (APPLY TO ALL SECTIONS)
--------------------------------------------------------------------------------
+### -------------------------------------------------------------------------------
+### 0. GENERAL NOTES (APPLY TO ALL SECTIONS)
+### -------------------------------------------------------------------------------
 
 0.1 Partition name
   Before submitting any .sbatch / .slurm script, edit it and change the
@@ -60,9 +60,9 @@ CONTENTS
       ls $NCCL_DIR/include $NCCL_DIR/lib
 
 
--------------------------------------------------------------------------------
-1. MPI AND CUDA
--------------------------------------------------------------------------------
+### -------------------------------------------------------------------------------
+### 1. MPI AND CUDA
+### -------------------------------------------------------------------------------
 
 1.1 Makefile
   Problem: the Makefile uses MPI_INCLUDE and MPI_LIB, but neither is
@@ -118,9 +118,9 @@ CONTENTS
       sbatch run_4.sbatch
 
 
--------------------------------------------------------------------------------
-2. DISTRIBUTED GPU COLLECTIVES ON MULTIPLE NODES (NCCL + CUDA)
--------------------------------------------------------------------------------
+### -------------------------------------------------------------------------------
+### 2. DISTRIBUTED GPU COLLECTIVES ON MULTIPLE NODES (NCCL + CUDA)
+### -------------------------------------------------------------------------------
 
 2.1 Compiling ncclAllGather_mpi.cu
 
@@ -177,9 +177,9 @@ CONTENTS
   Remember to edit the .sbatch file to change -p gpu to -p A5000.
 
 
--------------------------------------------------------------------------------
-3. MULTI-GPU COMPUTING WITH NCCL - SINGLE NODE
--------------------------------------------------------------------------------
+### -------------------------------------------------------------------------------
+### 3. MULTI-GPU COMPUTING WITH NCCL - SINGLE NODE
+### -------------------------------------------------------------------------------
 
   Assuming the pip install was already done (see 0.2):
 
@@ -198,9 +198,9 @@ CONTENTS
       replace --partition=gpu with --partition=A5000
 
 
--------------------------------------------------------------------------------
-4. PYTORCH FOLDER
--------------------------------------------------------------------------------
+### -------------------------------------------------------------------------------
+### 4. PYTORCH FOLDER
+### -------------------------------------------------------------------------------
 
 4.1 Install PyTorch
       pip install torch
