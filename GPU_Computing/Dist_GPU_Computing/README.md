@@ -59,6 +59,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
       NCCL_DIR=$(python -c "import nvidia.nccl as m; print(m.__path__[0])")
 
   To check it:
+  
       echo $NCCL_DIR
       ls $NCCL_DIR/include $NCCL_DIR/lib
 
