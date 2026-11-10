@@ -27,6 +27,7 @@ Common workflows include multi-GPU training with MPI and NCCL-based collectives 
 ### -------------------------------------------------------------------------------
 
 0.1 Partition name
+
   Before submitting any .sbatch / .slurm script, edit it and change the
   partition from "gpu" to "A5000":
 
